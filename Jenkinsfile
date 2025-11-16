@@ -9,15 +9,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Install dependencies') {
             steps {
-                echo "Building project..."
+                bat 'pip install pytest'
             }
         }
 
-        stage('Test') {
+        stage('Run tests') {
             steps {
-                echo "Running tests..."
+                bat 'pytest -q'
             }
         }
 
@@ -26,6 +26,5 @@ pipeline {
                 echo "Deploy step (placeholder)"
             }
         }
-
     }
 }
